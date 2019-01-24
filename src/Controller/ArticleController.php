@@ -22,7 +22,6 @@ class ArticleController extends Controller
      */
     public function index()
     {
-
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
         return $this->render('articles/index.html.twig', array('articles' => $articles));
@@ -37,7 +36,8 @@ class ArticleController extends Controller
         $article = new Article();
 
         $form = $this->createFormBuilder($article)
-            ->add('title', TextType::class, array('attr' => array(
+            ->add('title', TextType::class, array(
+                'attr' => array(
                 'class' => 'form-control')))
             ->add('body', TextareaType::class, array(
                 'required' => false,
