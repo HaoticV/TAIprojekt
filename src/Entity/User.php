@@ -76,10 +76,9 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles(): array
     {
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return [
+            'ROLE_USER'
+        ];
     }
 
     /**
@@ -141,11 +140,11 @@ class User implements UserInterface, \Serializable
      */
     public function unserialize($serialized)
     {
-        list(
+        /*list(
             $this->id,
             $this->username,
             $this->email,
             $this->password
-            ) = $this->unserialize($serialized, ['allowed_classes' => false]);
+            ) = $this->unserialize($serialized, ['allowed_classes' => false]);*/
     }
 }
