@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +27,10 @@ class Article
      */
     private $body;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $userid;
 
     /**
      * Getters and Setters
@@ -53,6 +58,22 @@ class Article
     public function setBody($body)
     {
         $this->body = $body;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    /**
+     * @param mixed $userid
+     */
+    public function setUserid($userid): void
+    {
+        $this->userid = $userid;
     }
 
 

@@ -20,11 +20,22 @@ class UserFixture extends Fixture
     {
         $user = new User();
 
-        $user->setUsername('admin');
+        $user->setUsername('admin1');
         $user->setPassword(
-            $this->encoder->encodePassword($user, '0000')
+            $this->encoder->encodePassword($user, '1111')
         );
         $user->setEmail('jacekboguta@gmail.com');
+        $manager->persist($user);
+
+        $manager->flush();
+
+        $user = new User();
+
+        $user->setUsername('admin2');
+        $user->setPassword(
+            $this->encoder->encodePassword($user, '2222')
+        );
+        $user->setEmail('jacekboguta2@gmail.com');
         $manager->persist($user);
 
         $manager->flush();

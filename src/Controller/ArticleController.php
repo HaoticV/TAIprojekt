@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,12 @@ class ArticleController extends AbstractController
      */
     public function index()
     {
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findBy(
+            ['userid' => $user->getid()]
+        );;
 
         return $this->render('articles/index.html.twig', array('articles' => $articles));
     }
@@ -34,7 +40,10 @@ class ArticleController extends AbstractController
      */
     public function new(Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
         $article = new Article();
+        $article->setUserid($user->getid());
 
         $form = $this->createFormBuilder($article)
             ->add('title', TextType::class, array(
