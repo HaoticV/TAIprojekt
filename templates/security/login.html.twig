@@ -2,36 +2,34 @@
 
 {% block title %}Hello!{% endblock %}
 
+{% block stylesheets %}
+    {{ include('include/navbarlogin.html.twig') }}
+{% endblock %}
+
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
-        }
 
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
 
-        .error {
-            color: red
-        }
-    </style>
-
-    <div class="example-wrapper">
-        <h1>Login page</h1>
+    <div class="form-group row">
 
         {% if error %}
-            <span class="error">Zły login lub hasło</span>
+            <b><span class="text-danger">Wrong username or password</span></b>
         {% endif %}
 
+
         <form action="{{ path('login') }}" method="POST">
-            <input type="text" name="_username" value="{{ lastUserName }}" placeholder="Username here...">
-            <input type="password" name="_password">
-            <button type="submit">Login</button>
+            <fieldset>
+                <legend>Login</legend>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control" name="_username" id="exampleInputEmail1"
+                           value="{{ lastUserName }}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="_password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </fieldset>
         </form>
     </div>
 {% endblock %}

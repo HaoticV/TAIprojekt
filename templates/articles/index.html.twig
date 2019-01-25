@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SymfArt Articles{% endblock %}
+{% block title %}Your Notes{% endblock %}
+
+{% block stylesheets %}
+    {{ include('include/navbarbody.html.twig') }}
+{% endblock %}
 
 {% block body %}
     {% if articles %}

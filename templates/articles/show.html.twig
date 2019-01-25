@@ -2,9 +2,17 @@
 
 {% block title %}{{ article.title }}{% endblock %}
 
+{% block stylesheets %}
+    {{ include('include/navbarbody.html.twig') }}
+{% endblock %}
+
 {% block body %}
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.body }}</p>
-    <hr>
-    <a href="/">Go Back</a>
+
+    <div class="card border-secondary mb-3" style="max-width: 30rem;">
+        <h3 class="card-header">{{ article.title }}</h3>
+        <div class="card-body">
+            <h4 class="card-title">{{ article.body }}</h4>
+        </div>
+    </div>
+    <a href="/article" class="btn btn-primary">Go Back</a>
 {% endblock %}

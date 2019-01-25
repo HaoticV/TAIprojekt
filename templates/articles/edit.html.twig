@@ -2,8 +2,13 @@
 
 {% block title %}Edit Article{% endblock %}
 
+{% block stylesheets %}
+    {{ include('include/navbarbody.html.twig') }}
+{% endblock %}
+
 {% block body %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 {% endblock %}
+
