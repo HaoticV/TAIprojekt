@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/", name="article_list")
+     * @Route("/article", name="article_list")
      * @Method({"GET"})
      */
     public function index()
@@ -118,6 +118,13 @@ class ArticleController extends AbstractController
         $response->send();
     }
 
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+        throw new \Exception('Don\'t ??? to activate logout in security.yaml');
+    }
 
 }
 
