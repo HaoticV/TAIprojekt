@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,6 +29,6 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
-        throw new \Exception('Don\'t forget to activate logout in security.yaml');
+
     }
 }
