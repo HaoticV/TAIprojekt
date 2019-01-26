@@ -10,12 +10,6 @@
 
 
     <div class="form-group row">
-
-        {% if error %}
-            <b><span class="text-danger">Wrong username or password</span></b>
-        {% endif %}
-
-
         <form action="{{ path('login') }}" method="POST">
             <fieldset>
                 <legend>Login</legend>
@@ -28,12 +22,12 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" name="_password">
                 </div>
+                {% if error %}
+                    <b><span class="text-danger">Wrong username or password</span></b><br/>
+                {% endif %}
                 <button type="submit" class="btn btn-primary">Login</button>
             </fieldset>
         </form>
     </div>
-{% endblock %}
 
-{% block javascripts %}
-    <script src="/js/authfail.js"></script>
 {% endblock %}

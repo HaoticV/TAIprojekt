@@ -29,11 +29,10 @@ class ArticleController extends AbstractController
 
         $articles = $this->getDoctrine()->getRepository(Article::class)->findBy(
             ['userid' => $user->getid()]
-        );;
+        );
 
         return $this->render('articles/index.html.twig', array('articles' => $articles));
     }
-
     /**
      * @Route("/article/new", name="new_article")
      * Method({"GET", "POST"})
@@ -48,7 +47,7 @@ class ArticleController extends AbstractController
         $form = $this->createFormBuilder($article)
             ->add('title', TextType::class, array(
                 'attr' => array(
-                'class' => 'form-control')))
+                    'class' => 'form-control')))
             ->add('body', TextareaType::class, array(
                 'required' => false,
                 'attr' => array('class' => 'form-control')))
